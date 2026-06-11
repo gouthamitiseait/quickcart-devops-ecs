@@ -33,7 +33,7 @@ resource "aws_ecs_task_definition" "product" {
 
       environment = [
         { name = "AWS_REGION", value = "ap-south-1" },
-        { name = "S3_BUCKET_NAME", value = "devops-project-frontend-rajesh" }
+        { name = "S3_BUCKET_NAME", value = "devops-project-frontend-gouthami" }
       ]
 
       logConfiguration = {
