@@ -5,7 +5,7 @@ pipeline {
         AWS_REGION      = 'ap-south-1'
         PROJECT_NAME    = 'devops-project'
         AWS_CREDENTIALS = credentials('aws-creds-id')
-        ECR_ACCOUNT     = '775826428475'
+        ECR_ACCOUNT     = '286668306333'
         ECR_REGION      = "${env.AWS_REGION}"
     }
 
