@@ -39,15 +39,15 @@ resource "aws_ecs_task_definition" "email" {
         },
         {
           name  = "S3_BUCKET_NAME"
-          value = "devops-project-frontend-rajesh"
+          value = "devops-project-frontend-gouthami"
         },
         {
           name  = "EMAIL_USER"
-          value = "rajesha100920@gmail.com"
+          value = "gouthamit250@gmail.com"
         },
         {
           name  = "EMAIL_PASSWORD"
-          value = "ijkl rtny jycm bvjc"
+          value = "cflg xfsp uyso blbc"
         }
       ]
 
