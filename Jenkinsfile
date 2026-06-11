@@ -1,8 +1,6 @@
 pipeline {
 agent any
-
-```
-environment {
+    environment {
     AWS_REGION      = 'ap-south-1'
     PROJECT_NAME    = 'devops-project'
     AWS_CREDENTIALS = credentials('aws-creds-id')
@@ -16,7 +14,6 @@ stages {
         steps {
             script {
 
-                // Default tags to avoid Terraform null errors
                 env.AUTH_IMAGE_TAG    = "latest"
                 env.PRODUCT_IMAGE_TAG = "latest"
                 env.CART_IMAGE_TAG    = "latest"
@@ -42,8 +39,6 @@ stages {
                             returnStdout: true
                         ).trim()
 
-                        echo "Image tag for ${service}: ${IMAGE_TAG}"
-
                         sh """
                             aws ecr describe-repositories --repository-names ${service} --region ${ECR_REGION} || \
                             aws ecr create-repository --repository-name ${service} --region ${ECR_REGION}
@@ -52,9 +47,7 @@ stages {
 
                             docker build -t ${ECR_ACCOUNT}.dkr.ecr.${ECR_REGION}.amazonaws.com/${service}:${IMAGE_TAG} .
 
-                            aws ecr get-login-password --region ${ECR_REGION} | \
-                            docker login --username AWS --password-stdin \
-                            ${ECR_ACCOUNT}.dkr.ecr.${ECR_REGION}.amazonaws.com
+                            aws ecr get-login-password --region ${ECR_REGION} | docker login --username AWS --password-stdin ${ECR_ACCOUNT}.dkr.ecr.${ECR_REGION}.amazonaws.com
 
                             docker push ${ECR_ACCOUNT}.dkr.ecr.${ECR_REGION}.amazonaws.com/${service}:${IMAGE_TAG}
 
@@ -105,7 +98,4 @@ post {
     failure {
         echo 'Deployment failed!'
     }
-}
-```
-
 }
