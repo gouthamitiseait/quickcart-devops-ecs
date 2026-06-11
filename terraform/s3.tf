@@ -1,8 +1,8 @@
 # Create S3 bucket
 resource "aws_s3_bucket" "demo_bucket" {
-  bucket = "${var.project_name}-frontend-rajesh"
+  bucket = "${var.project_name}-frontend-gouthami"
   tags = {
-    Name = "${var.project_name}-frontend-rajesh"
+    Name = "${var.project_name}-frontend-gouthami"
   }
 }
 
